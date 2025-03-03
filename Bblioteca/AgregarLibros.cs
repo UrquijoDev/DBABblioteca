@@ -45,7 +45,7 @@ namespace Bblioteca
 
                             SqlConnection con = new SqlConnection();
                             con.ConnectionString = "data source = LAPTOP-K2ADCD77\\SQLEXPRESS; " +
-                            "database = Bblioteca; integrated security = True ";
+                            "database = Bblioteca; integrated security = false ";
                             SqlCommand cmd = new SqlCommand();
                             cmd.Connection = con;
 
