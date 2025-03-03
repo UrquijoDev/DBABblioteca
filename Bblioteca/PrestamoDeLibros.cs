@@ -27,8 +27,7 @@ namespace Bblioteca
         private void PrestamoDeLibros_Load(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = LAPTOP-K2ADCD77\\SQLEXPRESS; " +
-                "database = Bblioteca; integrated security = True ";
+            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             con.Open();
@@ -55,8 +54,7 @@ namespace Bblioteca
             {
                 String Ide = txtNoControl.Text;
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = LAPTOP-K2ADCD77\\SQLEXPRESS; " +
-                    "database = Bblioteca; integrated security = True ";
+                con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 
@@ -147,10 +145,9 @@ namespace Bblioteca
             int cantidadDisponible = 0;
 
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = LAPTOP-K2ADCD77\\SQLEXPRESS; " +
-                    "database = Bblioteca; integrated security = True ";
+            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
 
-                SqlCommand cmd = new SqlCommand();
+            SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 con.Open();
 
@@ -177,9 +174,8 @@ namespace Bblioteca
 
 
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = LAPTOP-K2ADCD77\\SQLEXPRESS; " +
-                    "database = Bblioteca; integrated security = True ";
-                SqlCommand cmd = new SqlCommand();
+            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+            SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 con.Open();
 
@@ -194,8 +190,7 @@ namespace Bblioteca
         private void ActualizarCantidad(string nombreLibro) {
 
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = LAPTOP-K2ADCD77\\SQLEXPRESS; " +
-                "database = Bblioteca; integrated security = True ";
+            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             con.Open();

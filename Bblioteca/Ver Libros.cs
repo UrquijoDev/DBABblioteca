@@ -23,8 +23,7 @@ namespace Bblioteca
         {
             panel2.Visible = false;
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = LAPTOP-K2ADCD77\\SQLEXPRESS; " +
-            "database = Bblioteca; integrated security = True ";
+            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
 
@@ -64,8 +63,7 @@ namespace Bblioteca
                 {
                     panel2.Visible = true;
                     SqlConnection con = new SqlConnection();
-                    con.ConnectionString = "data source = LAPTOP-K2ADCD77\\SQLEXPRESS; " +
-                        "database = Bblioteca; integrated security = True ";
+                    con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
 
@@ -128,8 +126,7 @@ namespace Bblioteca
 
                 panel2.Visible = false;
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = LAPTOP-K2ADCD77\\SQLEXPRESS; " +
-                "database = Bblioteca; integrated security = True ";
+                con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 
@@ -143,8 +140,7 @@ namespace Bblioteca
             else {
                 panel2.Visible = false;
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = LAPTOP-K2ADCD77\\SQLEXPRESS; " +
-                "database = Bblioteca; integrated security = True ";
+                con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 
@@ -180,8 +176,7 @@ namespace Bblioteca
                     Int64 Cantidad = Int64.Parse(txtCantidadL.Text);
 
                     SqlConnection con = new SqlConnection();
-                    con.ConnectionString = "data source = LAPTOP-K2ADCD77\\SQLEXPRESS; " +
-                    "database = Bblioteca; integrated security = True ";
+                    con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
 
@@ -209,8 +204,7 @@ namespace Bblioteca
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     SqlConnection con = new SqlConnection();
-                    con.ConnectionString = "data source = LAPTOP-K2ADCD77\\SQLEXPRESS; " +
-                    "database = Bblioteca; integrated security = True ";
+                    con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
 

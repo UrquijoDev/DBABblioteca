@@ -24,9 +24,8 @@ namespace Bblioteca
   
                 Int64 Codigo = Int64.Parse(txtCodigo.Text);
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = LAPTOP-K2ADCD77\\SQLEXPRESS; " +
-                                        "database = Bblioteca; integrated security = True ";
-                SqlCommand cmd = new SqlCommand();
+            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+            SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 
                 con.Open();
