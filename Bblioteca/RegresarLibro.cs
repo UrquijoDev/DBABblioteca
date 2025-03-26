@@ -21,7 +21,7 @@ namespace Bblioteca
         private string NombreLibroDevuelto;
         private void RegresarLibro_Load(object sender, EventArgs e)
         {
-            panel2.Visible = false;
+            panel2.Visible = true;
             txtNumeroControl.Clear();
         }
 
@@ -56,7 +56,7 @@ namespace Bblioteca
                 if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null || dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "")
                 {
                     MessageBox.Show("La celda seleccionada está vacía.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    panel2.Visible = false;
+                    panel2.Visible = true;
                     return;
 
                 }
@@ -76,7 +76,7 @@ namespace Bblioteca
             else
             {
                 MessageBox.Show("No se puede hacer clic en esta celda.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                panel2.Visible = false; 
+                panel2.Visible = true; 
             }
         
 
@@ -123,7 +123,7 @@ namespace Bblioteca
         {
             if (txtNumeroControl.Text == "")
             {
-                panel2.Visible = false;
+                panel2.Visible = true;
                 dataGridView1.DataSource = null;
             }
         }
@@ -140,7 +140,7 @@ namespace Bblioteca
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            panel2.Visible = false;
+            panel2.Visible = true;
         }
 
         private void dateTimePicker10_ValueChanged(object sender, EventArgs e)

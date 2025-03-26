@@ -61,9 +61,10 @@
             this.panel1.Controls.Add(this.txtNumeroControl);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(8, 8);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(408, 580);
+            this.panel1.Size = new System.Drawing.Size(272, 377);
             this.panel1.TabIndex = 0;
             // 
             // btnSalir
@@ -71,9 +72,10 @@
             this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(210, 431);
+            this.btnSalir.Location = new System.Drawing.Point(140, 280);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(111, 62);
+            this.btnSalir.Size = new System.Drawing.Size(74, 40);
             this.btnSalir.TabIndex = 5;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = false;
@@ -84,9 +86,10 @@
             this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(39, 431);
+            this.btnLimpiar.Location = new System.Drawing.Point(26, 280);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(111, 62);
+            this.btnLimpiar.Size = new System.Drawing.Size(74, 40);
             this.btnLimpiar.TabIndex = 4;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = false;
@@ -97,9 +100,10 @@
             this.btnBuscarEstudiante.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnBuscarEstudiante.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBuscarEstudiante.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarEstudiante.Location = new System.Drawing.Point(69, 346);
+            this.btnBuscarEstudiante.Location = new System.Drawing.Point(46, 225);
+            this.btnBuscarEstudiante.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBuscarEstudiante.Name = "btnBuscarEstudiante";
-            this.btnBuscarEstudiante.Size = new System.Drawing.Size(231, 62);
+            this.btnBuscarEstudiante.Size = new System.Drawing.Size(154, 40);
             this.btnBuscarEstudiante.TabIndex = 3;
             this.btnBuscarEstudiante.Text = "Buscar Estudiante";
             this.btnBuscarEstudiante.UseVisualStyleBackColor = false;
@@ -108,9 +112,10 @@
             // txtNumeroControl
             // 
             this.txtNumeroControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumeroControl.Location = new System.Drawing.Point(25, 293);
+            this.txtNumeroControl.Location = new System.Drawing.Point(17, 190);
+            this.txtNumeroControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNumeroControl.Name = "txtNumeroControl";
-            this.txtNumeroControl.Size = new System.Drawing.Size(318, 32);
+            this.txtNumeroControl.Size = new System.Drawing.Size(213, 24);
             this.txtNumeroControl.TabIndex = 2;
             this.txtNumeroControl.TextChanged += new System.EventHandler(this.txtNumeroControl_TextChanged);
             // 
@@ -118,18 +123,20 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(34, 252);
+            this.label1.Location = new System.Drawing.Point(23, 164);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(295, 29);
+            this.label1.Size = new System.Drawing.Size(195, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Ingrese numero de control";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(104, 61);
+            this.pictureBox1.Location = new System.Drawing.Point(69, 40);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(171, 167);
+            this.pictureBox1.Size = new System.Drawing.Size(114, 109);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -137,11 +144,12 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(426, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(284, 8);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(783, 580);
+            this.dataGridView1.Size = new System.Drawing.Size(522, 377);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -156,9 +164,10 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(426, 604);
+            this.panel2.Location = new System.Drawing.Point(284, 393);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(783, 220);
+            this.panel2.Size = new System.Drawing.Size(522, 143);
             this.panel2.TabIndex = 2;
             // 
             // btnCancelar
@@ -166,9 +175,10 @@
             this.btnCancelar.BackColor = System.Drawing.Color.White;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(596, 117);
+            this.btnCancelar.Location = new System.Drawing.Point(397, 76);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(135, 55);
+            this.btnCancelar.Size = new System.Drawing.Size(90, 36);
             this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -179,9 +189,10 @@
             this.btnRegresar.BackColor = System.Drawing.Color.White;
             this.btnRegresar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRegresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegresar.Location = new System.Drawing.Point(596, 45);
+            this.btnRegresar.Location = new System.Drawing.Point(397, 29);
+            this.btnRegresar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRegresar.Name = "btnRegresar";
-            this.btnRegresar.Size = new System.Drawing.Size(135, 55);
+            this.btnRegresar.Size = new System.Drawing.Size(90, 36);
             this.btnRegresar.TabIndex = 6;
             this.btnRegresar.Text = "Regresar";
             this.btnRegresar.UseVisualStyleBackColor = false;
@@ -190,37 +201,41 @@
             // dateTimePicker10
             // 
             this.dateTimePicker10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker10.Location = new System.Drawing.Point(236, 168);
+            this.dateTimePicker10.Location = new System.Drawing.Point(157, 109);
+            this.dateTimePicker10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePicker10.Name = "dateTimePicker10";
-            this.dateTimePicker10.Size = new System.Drawing.Size(326, 30);
+            this.dateTimePicker10.Size = new System.Drawing.Size(219, 23);
             this.dateTimePicker10.TabIndex = 5;
             this.dateTimePicker10.ValueChanged += new System.EventHandler(this.dateTimePicker10_ValueChanged);
             // 
             // txtDiaPrestamo
             // 
             this.txtDiaPrestamo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiaPrestamo.Location = new System.Drawing.Point(236, 98);
+            this.txtDiaPrestamo.Location = new System.Drawing.Point(157, 64);
+            this.txtDiaPrestamo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDiaPrestamo.Name = "txtDiaPrestamo";
             this.txtDiaPrestamo.ReadOnly = true;
-            this.txtDiaPrestamo.Size = new System.Drawing.Size(326, 30);
+            this.txtDiaPrestamo.Size = new System.Drawing.Size(219, 23);
             this.txtDiaPrestamo.TabIndex = 4;
             // 
             // txtNombreLibro
             // 
             this.txtNombreLibro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreLibro.Location = new System.Drawing.Point(236, 30);
+            this.txtNombreLibro.Location = new System.Drawing.Point(157, 20);
+            this.txtNombreLibro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNombreLibro.Name = "txtNombreLibro";
             this.txtNombreLibro.ReadOnly = true;
-            this.txtNombreLibro.Size = new System.Drawing.Size(326, 30);
+            this.txtNombreLibro.Size = new System.Drawing.Size(219, 23);
             this.txtNombreLibro.TabIndex = 3;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(24, 165);
+            this.label4.Location = new System.Drawing.Point(16, 107);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(206, 29);
+            this.label4.Size = new System.Drawing.Size(134, 20);
             this.label4.TabIndex = 2;
             this.label4.Text = "Dia de devolucion";
             // 
@@ -228,9 +243,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(24, 94);
+            this.label3.Location = new System.Drawing.Point(16, 61);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(192, 29);
+            this.label3.Size = new System.Drawing.Size(127, 20);
             this.label3.TabIndex = 1;
             this.label3.Text = "Dia de Prestamo";
             // 
@@ -238,22 +254,24 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(24, 27);
+            this.label2.Location = new System.Drawing.Point(16, 18);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 29);
+            this.label2.Size = new System.Drawing.Size(65, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "Nombre";
             // 
             // RegresarLibro
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(1296, 603);
+            this.ClientSize = new System.Drawing.Size(827, 544);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "RegresarLibro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegresarLibro";
