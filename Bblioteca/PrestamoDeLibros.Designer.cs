@@ -461,7 +461,7 @@
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(312, 122);
+            this.dataGridView1.Size = new System.Drawing.Size(263, 122);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
@@ -499,11 +499,11 @@
             // 
             this.NombreLibro.HeaderText = "Nombre";
             this.NombreLibro.Name = "NombreLibro";
-            this.NombreLibro.Width = 200;
+            this.NombreLibro.Width = 150;
             // 
             // CantidadDisponible
             // 
-            this.CantidadDisponible.HeaderText = "Cantidad";
+            this.CantidadDisponible.HeaderText = "Existencia";
             this.CantidadDisponible.Name = "CantidadDisponible";
             this.CantidadDisponible.Width = 70;
             // 
