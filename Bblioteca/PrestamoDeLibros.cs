@@ -173,7 +173,7 @@ namespace Bblioteca
                 cmd.Connection = con;
                 con.Open();
 
-                cmd.CommandText = "SELECT Cantidad FROM AgregarLibro WHERE Nombre = '" + nombreLibro + "'";
+                cmd.CommandText = "SELECT Existencia FROM AgregarLibro WHERE Nombre = '" + nombreLibro + "'";
 
                 object result = cmd.ExecuteScalar();
                 cantidadDisponible = Convert.ToInt32(result);
@@ -212,10 +212,10 @@ namespace Bblioteca
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             con.Open();
-            cmd.CommandText = "UPDATE AgregarLibro SET Cantidad = Cantidad - 1 WHERE Nombre = '" + nombreLibro + "'";
+            cmd.CommandText = "UPDATE AgregarLibro SET Existencia = Existencia - 1 WHERE Nombre = '" + nombreLibro + "'";
             cmd.ExecuteNonQuery();
             con.Close();
-        }
+        } 
 
         private void txtNoControl_TextChanged(object sender, EventArgs e)
         {

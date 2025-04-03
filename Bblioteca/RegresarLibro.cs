@@ -112,7 +112,7 @@ namespace Bblioteca
             cmd.Connection = con;
             con.Open();
 
-            cmd.CommandText = "UPDATE AgregarLibro SET Cantidad = Cantidad + 1 WHERE Nombre = '" + NombreLibroDevuelto + "'";
+            cmd.CommandText = "UPDATE AgregarLibro SET Existencia = Existencia + 1 WHERE Nombre = '" + NombreLibroDevuelto + "'";
             cmd.ExecuteNonQuery();
             con.Close();
 

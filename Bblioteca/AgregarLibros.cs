@@ -42,7 +42,7 @@ namespace Bblioteca
                             String Dia = DiaAgregado.Text;
                             Int64 Precio = Int64.Parse(txtPrecioLibro.Text);
                             Int64 Cantidad = Int64.Parse(txtCantidadLibros.Text);
-
+                            Int64 Existencia = Cantidad; 
                             SqlConnection con = new SqlConnection();
                             con.ConnectionString = "Data Source=HACEDORDELLUVIA\\MSSQLSERVER3;Initial Catalog=Bblioteca;User ID=sa;Password=sa1@;";
                             SqlCommand cmd = new SqlCommand();
@@ -50,7 +50,7 @@ namespace Bblioteca
 
                             con.Open();
                             cmd.CommandText = " Insert into AgregarLibro values  " +
-                            "('" + NombreLibro + "' , '" + AutorLibro + "', '" + Dia + "', '" + Precio + "', '" + Cantidad + "')";
+                            "('" + NombreLibro + "' , '" + AutorLibro + "', '" + Dia + "', '" + Precio + "', '" + Cantidad + "','" + Existencia  + "' )";
                             cmd.ExecuteNonQuery();
                             con.Close();
 

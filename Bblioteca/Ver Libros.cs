@@ -180,7 +180,7 @@ namespace Bblioteca
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
 
-                    
+                     
                     cmd.CommandText = "UPDATE AgregarLibro SET Nombre = @Nombre, Autor = @Autor, Dia = @Dia, Precio = @Precio, Cantidad = @Cantidad WHERE idLibro = @IdLibro";
 
                     
