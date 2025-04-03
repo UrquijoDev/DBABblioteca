@@ -28,7 +28,7 @@ namespace Bblioteca
         private void button1_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+            con.ConnectionString = "Data Source=HACEDORDELLUVIA\\MSSQLSERVER3;Initial Catalog=Bblioteca;User ID=sa;Password=sa1@;";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
 
@@ -88,7 +88,7 @@ namespace Bblioteca
             if (VC.ShowDialog() == DialogResult.OK)
             {
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+                con.ConnectionString = "Data Source=HACEDORDELLUVIA\\MSSQLSERVER3;Initial Catalog=Bblioteca;User ID=sa;Password=sa1@;";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 con.Open();
@@ -107,7 +107,7 @@ namespace Bblioteca
 
         private void ActualizarCantidad(string NombreLibroDevuelto) {
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+            con.ConnectionString = "Data Source=HACEDORDELLUVIA\\MSSQLSERVER3;Initial Catalog=Bblioteca;User ID=sa;Password=sa1@;";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             con.Open();

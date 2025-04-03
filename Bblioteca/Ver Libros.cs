@@ -23,7 +23,7 @@ namespace Bblioteca
         {
             panel2.Visible = false;
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+            con.ConnectionString = "Data Source=HACEDORDELLUVIA\\MSSQLSERVER3;Initial Catalog=Bblioteca;User ID=sa;Password=sa1@;";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
 
@@ -63,7 +63,7 @@ namespace Bblioteca
                 {
                     panel2.Visible = true;
                     SqlConnection con = new SqlConnection();
-                    con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+                    con.ConnectionString = "Data Source=HACEDORDELLUVIA\\MSSQLSERVER3;Initial Catalog=Bblioteca;User ID=sa;Password=sa1@;";
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
 
@@ -126,7 +126,7 @@ namespace Bblioteca
 
                 panel2.Visible = false;
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+                con.ConnectionString = "Data Source=HACEDORDELLUVIA\\MSSQLSERVER3;Initial Catalog=Bblioteca;User ID=sa;Password=sa1@;";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 
@@ -140,7 +140,7 @@ namespace Bblioteca
             else {
                 panel2.Visible = false;
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+                con.ConnectionString = "Data Source=HACEDORDELLUVIA\\MSSQLSERVER3;Initial Catalog=Bblioteca;User ID=sa;Password=sa1@;";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 
@@ -164,32 +164,56 @@ namespace Bblioteca
             VerificacionCodigo VC = new VerificacionCodigo(this);
             if (VC.ShowDialog() == DialogResult.OK)
             {
-                if (MessageBox.Show("La informacion sera MODIFICADA. Esta seguro?", "Success",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (MessageBox.Show("La información será MODIFICADA. ¿Está seguro?", "Success",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-
-
+                    
                     String Nombre = txtNombreL.Text;
                     String Autor = txtAutorL.Text;
                     String Dia = txtDiaL.Text;
                     Int64 Costo = Int64.Parse(txtPrecioL.Text);
                     Int64 Cantidad = Int64.Parse(txtCantidadL.Text);
 
+                    
                     SqlConnection con = new SqlConnection();
-                    con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+                    con.ConnectionString = "Data Source=HACEDORDELLUVIA\\MSSQLSERVER3;Initial Catalog=Bblioteca;User ID=sa;Password=sa1@;";
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
 
+                    
+                    cmd.CommandText = "UPDATE AgregarLibro SET Nombre = @Nombre, Autor = @Autor, Dia = @Dia, Precio = @Precio, Cantidad = @Cantidad WHERE idLibro = @IdLibro";
 
-                    cmd.CommandText = "Update AgregarLibro set Nombre = '" + Nombre + "', Autor = '" + Autor + "', Dia = '" + Dia + "'" +
-                        ", Precio = '" + Costo + "', Cantidad = '" + Cantidad + "' where idLibro = '" + IdFila + "'";
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataSet ds = new DataSet();
-                    da.Fill(ds);
+                    
+                    cmd.Parameters.AddWithValue("@Nombre", Nombre);
+                    cmd.Parameters.AddWithValue("@Autor", Autor);
+                    cmd.Parameters.AddWithValue("@Dia", Dia);
+                    cmd.Parameters.AddWithValue("@Precio", Costo);
+                    cmd.Parameters.AddWithValue("@Cantidad", Cantidad);
+                    cmd.Parameters.AddWithValue("@IdLibro", IdFila);
+
+                    try
+                    {
+                        
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+
+                        
+                        Ver_Libros_Load(sender, e);
+                    }
+                    catch (Exception ex)
+                    {
+                        
+                        MessageBox.Show("Error al actualizar la información: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        
+                        if (con.State == ConnectionState.Open)
+                        {
+                            con.Close();
+                        }
+                    }
                 }
-            }
-            else {
-                return;
             }
 
 
@@ -204,7 +228,7 @@ namespace Bblioteca
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     SqlConnection con = new SqlConnection();
-                    con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+                    con.ConnectionString = "Data Source=HACEDORDELLUVIA\\MSSQLSERVER3;Initial Catalog=Bblioteca;User ID=sa;Password=sa1@;";
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
 

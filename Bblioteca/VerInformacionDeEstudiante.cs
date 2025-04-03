@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace Bblioteca
 {
@@ -29,38 +32,61 @@ namespace Bblioteca
         {
             if (txtBuscarEstudiante.Text != "")
             {
-                label1.Visible = false;
-                SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                // Definir la ConnectionString
+                string connectionString = "Data Source=HACEDORDELLUVIA\\MSSQLSERVER3;Initial Catalog=Bblioteca;User ID=sa;Password=sa1@;";
 
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    try
+                    {
+                        con.Open();
 
-                cmd.CommandText = "Select * from AgregarAlumno where NumeroControl Like '" + txtBuscarEstudiante.Text + "%'";
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
-                da.Fill(ds);
-                dataGridView1.DataSource = ds.Tables[0];
+                        // Configurar el comando SQL para buscar estudiantes
+                        SqlCommand cmd = new SqlCommand();
+                        cmd.Connection = con;
+                        cmd.CommandText = "Select * from AgregarAlumno where NumeroControl Like '" + txtBuscarEstudiante.Text + "%'";
 
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        DataSet ds = new DataSet();
+                        da.Fill(ds);
 
-
+                        dataGridView1.DataSource = ds.Tables[0];
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al buscar estudiantes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
-            else 
+            else
             {
                 label1.Visible = true;
-                Image image = Image.FromFile("C://Users//alexh//OneDrive//Escritorio//Bibilioteca/search (2).png");
-                pictureBox1.Image = image;
 
-                SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
+                // Definir la ConnectionString
+                string connectionString = "Data Source=HACEDORDELLUVIA\\MSSQLSERVER3;Initial Catalog=Bblioteca;User ID=sa;Password=sa1@;";
 
-                cmd.CommandText = "Select * from AgregarAlumno";
-                SqlDataAdapter DA = new SqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
-                DA.Fill(ds);
-                dataGridView1.DataSource = ds.Tables[0];
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    try
+                    {
+                        con.Open();
+
+                        // Configurar el comando SQL para mostrar todos los estudiantes
+                        SqlCommand cmd = new SqlCommand();
+                        cmd.Connection = con;
+                        cmd.CommandText = "Select * from AgregarAlumno";
+
+                        SqlDataAdapter DA = new SqlDataAdapter(cmd);
+                        DataSet ds = new DataSet();
+                        DA.Fill(ds);
+
+                        dataGridView1.DataSource = ds.Tables[0];
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al cargar estudiantes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
 
@@ -68,7 +94,7 @@ namespace Bblioteca
         {
             panel3.Visible = false;
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+            con.ConnectionString = "Data Source=HACEDORDELLUVIA\\MSSQLSERVER3;Initial Catalog=Bblioteca;User ID=sa;Password=sa1@;";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
 
@@ -96,7 +122,7 @@ namespace Bblioteca
                 {
                     panel3.Visible = true;
                     SqlConnection con = new SqlConnection();
-                    con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+                    con.ConnectionString = "Data Source=HACEDORDELLUVIA\\MSSQLSERVER3;Initial Catalog=Bblioteca;User ID=sa;Password=sa1@;";
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
 
@@ -152,7 +178,7 @@ namespace Bblioteca
                 if (MessageBox.Show("La informacion se va a modificar", "Estas seguro?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     SqlConnection con = new SqlConnection();
-                    con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+                    con.ConnectionString = "Data Source=HACEDORDELLUVIA\\MSSQLSERVER3;Initial Catalog=Bblioteca;User ID=sa;Password=sa1@;";
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
 
@@ -178,7 +204,7 @@ namespace Bblioteca
                 if (MessageBox.Show("La informacion sera eliminada", "Estas seguro?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     SqlConnection con = new SqlConnection();
-                    con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+                    con.ConnectionString = "Data Source=HACEDORDELLUVIA\\MSSQLSERVER3;Initial Catalog=Bblioteca;User ID=sa;Password=sa1@;";
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
 
@@ -206,7 +232,7 @@ namespace Bblioteca
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            txtBuscarEstudiante.Clear();
         }
     }
 }
