@@ -396,7 +396,7 @@ namespace Bblioteca
         private bool TienePrestamoActivo(string numeroControl, string nombreLibro)
         {
             bool tienePrestamo = false;
-            SqlConnection con = new SqlConnection("Data Source=HACEDORDELLUVIA\\MSSQLSERVER3;Initial Catalog=Bblioteca;User ID=sa;Password=sa1@;");
+            SqlConnection con = new SqlConnection("data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;");
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
 
