@@ -21,11 +21,19 @@ namespace Bblioteca
 
         private void button1_Click(object sender, EventArgs e)
         {
-  
+            // Validación: campo vacío
+            if (string.IsNullOrWhiteSpace(txtCodigo.Text))
+            {
+                MessageBox.Show("El campo 'Código' está vacío. Por favor, ingrese un valor.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
                 Int64 Codigo = Int64.Parse(txtCodigo.Text);
                 SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
-            SqlCommand cmd = new SqlCommand();
+                con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+                SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 
                 con.Open();
@@ -35,25 +43,36 @@ namespace Bblioteca
 
                 if (NombreU != null)
                 {
-                cmd.Parameters.Clear();
-                cmd.CommandText = "SELECT Usuario FROM TablaLogin WHERE Codigo = @Codigo";
-                cmd.Parameters.AddWithValue("@Codigo", NombreU);
-                String NombreUsuario = cmd.ExecuteScalar()?.ToString();
-                
-                cmd.CommandText = " Insert into UltimoUsuarioActualizando values ('" + NombreUsuario + "')";
-                cmd.ExecuteNonQuery();
-                con.Close();
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "SELECT Usuario FROM TablaLogin WHERE Codigo = @Codigo";
+                    cmd.Parameters.AddWithValue("@Codigo", NombreU);
+                    String NombreUsuario = cmd.ExecuteScalar()?.ToString();
 
-                this.DialogResult = DialogResult.OK;
+                    cmd.CommandText = "INSERT INTO UltimoUsuarioActualizando VALUES (@Usuario)";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@Usuario", NombreUsuario);
+                    cmd.ExecuteNonQuery();
+
+                    con.Close();
+
+                    this.DialogResult = DialogResult.OK;
                     this.Close();
-
                 }
                 else
                 {
                     MessageBox.Show("El código ingresado no se encuentra en la base de datos. Por favor, ingrese un nuevo código.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("El código ingresado no es válido. Asegúrese de ingresar un número.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
         private AgregarEstudiante agregarEstudiante;
 
 
