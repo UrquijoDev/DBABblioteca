@@ -44,7 +44,7 @@ namespace Bblioteca
                             Int64 Cantidad = Int64.Parse(txtCantidadLibros.Text);
                             Int64 Existencia = Cantidad; 
                             SqlConnection con = new SqlConnection();
-                            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+                            con.ConnectionString = "data source=localhost; database=Bblioteca; user id=sa; password=sa1@;";
                             SqlCommand cmd = new SqlCommand();
                             cmd.Connection = con;
 

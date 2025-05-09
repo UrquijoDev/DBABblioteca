@@ -28,7 +28,7 @@ namespace Bblioteca
         private void PrestamoDeLibros_Load(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+            con.ConnectionString = "data source=localhost; database=Bblioteca; user id=sa; password=sa1@;";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             con.Open();
@@ -55,7 +55,7 @@ namespace Bblioteca
             {
                 String Ide = txtNoControl.Text;
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+                con.ConnectionString = "data source=localhost; database=Bblioteca; user id=sa; password=sa1@;";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 
@@ -118,6 +118,11 @@ namespace Bblioteca
 
         private void btnPrestar_Click(object sender, EventArgs e)
         {
+            if (TieneMultaPendiente(txtNoControl.Text))
+            {
+                MessageBox.Show("No puedes realizar un préstamo porque tienes multas pendientes de pago.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (txtNombre.Text != "" && librosSeleccionados.Count > 0)
             {
                 // Validar que no se exceda el límite de 3 libros
@@ -167,7 +172,7 @@ namespace Bblioteca
             int cantidadDisponible = 0;
 
                 SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+            con.ConnectionString = "data source=localhost; database=Bblioteca; user id=sa; password=sa1@;";
 
             SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
@@ -190,25 +195,41 @@ namespace Bblioteca
             String SemA = txtSemestre.Text;
             Int64 ContactoA = Int64.Parse(txtContacto.Text);
             String Correo = txtCorreo.Text;
-            String DiaPrestamo = dateTimePicker.Text;
+
+            DateTime fechaPrestamo = dateTimePicker.Value.Date;
+            DateTime fechaEntrega = fechaPrestamo.AddDays(5); // ← 5 días de plazo, puedes ajustar
 
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+            con.ConnectionString = "data source=localhost; database=Bblioteca; user id=sa; password=sa1@;";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             con.Open();
 
-            cmd.CommandText = "Insert into Prestamos (NumeroControlE, NombreE, DepartamentoE, SemestreE, ContactoE, CorreoE, NombreLibro, DiaPrestamo) values ('" + NumeroControl + "', '" + NombreA + "', '" + DepA + "', '" + SemA + "', '" + ContactoA + "', '" + Correo + "', '" + nombreLibro + "', '" + DiaPrestamo + "')";
+            // Insertar también FechaEntrega
+            cmd.CommandText = "INSERT INTO Prestamos (NumeroControlE, NombreE, DepartamentoE, SemestreE, ContactoE, CorreoE, NombreLibro, DiaPrestamo, FechaEntrega) " +
+                              "VALUES (@NumeroControl, @NombreA, @DepA, @SemA, @ContactoA, @Correo, @NombreLibro, @DiaPrestamo, @FechaEntrega)";
+
+            cmd.Parameters.AddWithValue("@NumeroControl", NumeroControl);
+            cmd.Parameters.AddWithValue("@NombreA", NombreA);
+            cmd.Parameters.AddWithValue("@DepA", DepA);
+            cmd.Parameters.AddWithValue("@SemA", SemA);
+            cmd.Parameters.AddWithValue("@ContactoA", ContactoA);
+            cmd.Parameters.AddWithValue("@Correo", Correo);
+            cmd.Parameters.AddWithValue("@NombreLibro", nombreLibro);
+            cmd.Parameters.AddWithValue("@DiaPrestamo", fechaPrestamo);
+            cmd.Parameters.AddWithValue("@FechaEntrega", fechaEntrega);
+
             cmd.ExecuteNonQuery();
             con.Close();
 
             ActualizarCantidad(nombreLibro);
         }
 
+
         private void ActualizarCantidad(string nombreLibro) {
 
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+            con.ConnectionString = "data source=localhost; database=Bblioteca; user id=sa; password=sa1@;";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             con.Open();
@@ -369,7 +390,7 @@ namespace Bblioteca
             if (!string.IsNullOrEmpty(txtNoControl.Text))
             {
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+                con.ConnectionString = "data source=localhost; database=Bblioteca; user id=sa; password=sa1@;";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 
@@ -396,7 +417,7 @@ namespace Bblioteca
         private bool TienePrestamoActivo(string numeroControl, string nombreLibro)
         {
             bool tienePrestamo = false;
-            SqlConnection con = new SqlConnection("data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;");
+            SqlConnection con = new SqlConnection("data source=localhost; database=Bblioteca; user id=sa; password=sa1@;");
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
 
@@ -424,5 +445,38 @@ namespace Bblioteca
 
             return tienePrestamo;
         }
+        private bool TieneMultaPendiente(string numeroControl)
+        {
+            bool tieneMulta = false;
+            SqlConnection con = new SqlConnection("data source=localhost; database=Bblioteca; user id=sa; password=sa1@;");
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+
+            try
+            {
+                con.Open();
+                cmd.CommandText = @"SELECT COUNT(*) 
+                            FROM Multas 
+                            WHERE IdPrestamo IN 
+                                  (SELECT IdPrestamo FROM Prestamos WHERE NumeroControlE = @NumeroControl)
+                              AND Pagado = 0";
+                cmd.Parameters.AddWithValue("@NumeroControl", numeroControl);
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                tieneMulta = count > 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al verificar multas pendientes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                    con.Close();
+            }
+
+            return tieneMulta;
+        }
+
     }
 }

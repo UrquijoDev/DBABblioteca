@@ -77,5 +77,12 @@ namespace Bblioteca
         {
 
         }
+
+        private void multasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Multas multasForm = new Multas();
+            multasForm.Show();
+        }
+
     }
 }

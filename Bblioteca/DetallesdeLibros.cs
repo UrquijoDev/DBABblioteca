@@ -21,7 +21,7 @@ namespace Bblioteca
         private void DetallesdeLibros_Load(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+            con.ConnectionString = "data source=localhost; database=Bblioteca; user id=sa; password=sa1@;";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
 

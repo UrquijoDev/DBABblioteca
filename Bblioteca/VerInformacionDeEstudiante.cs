@@ -94,7 +94,7 @@ namespace Bblioteca
         {
             panel3.Visible = false;
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+            con.ConnectionString = "data source=localhost; database=Bblioteca; user id=sa; password=sa1@;";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
 
@@ -122,7 +122,7 @@ namespace Bblioteca
                 {
                     panel3.Visible = true;
                     SqlConnection con = new SqlConnection();
-                    con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+                    con.ConnectionString = "data source=localhost; database=Bblioteca; user id=sa; password=sa1@;";
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
 
@@ -178,7 +178,7 @@ namespace Bblioteca
                 if (MessageBox.Show("La informacion se va a modificar", "Estas seguro?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     SqlConnection con = new SqlConnection();
-                    con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+                    con.ConnectionString = "data source=localhost; database=Bblioteca; user id=sa; password=sa1@;";
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
 
@@ -204,7 +204,7 @@ namespace Bblioteca
                 if (MessageBox.Show("La informacion sera eliminada", "Estas seguro?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     SqlConnection con = new SqlConnection();
-                    con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+                    con.ConnectionString = "data source=localhost; database=Bblioteca; user id=sa; password=sa1@;";
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
 

@@ -51,7 +51,7 @@ namespace Bblioteca
                     if (Int64.TryParse(txtContactoAlum.Text, out Int64 contacto))
                     {
                         SqlConnection con = new SqlConnection();
-                        con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+                        con.ConnectionString = "data source=localhost; database=Bblioteca; user id=sa; password=sa1@;";
                         con.Open();
 
                         SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM AgregarAlumno WHERE NumeroControl = @NumeroControl", con);

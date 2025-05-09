@@ -28,7 +28,7 @@ namespace Bblioteca
         private void button1_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+            con.ConnectionString = "data source=localhost; database=Bblioteca; user id=sa; password=sa1@;";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
 
@@ -81,33 +81,54 @@ namespace Bblioteca
         
 
     }
-    private void btnRegresar_Click(object sender, EventArgs e)
+        private void btnRegresar_Click(object sender, EventArgs e)
         {
-
             VerificacionCodigo VC = new VerificacionCodigo(this);
             if (VC.ShowDialog() == DialogResult.OK)
             {
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+                con.ConnectionString = "data source=localhost; database=Bblioteca; user id=sa; password=sa1@;";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 con.Open();
 
-                cmd.CommandText = "update Prestamos set DiaDevolucion = '" + dateTimePicker10.Text + "' where NumeroControlE  = '" + txtNumeroControl.Text + "' and IdPrestamo = '" + IdFila + "'";
+                // 💥 Verificar si el préstamo tiene multa pendiente
+                bool tieneMultaNoPagada = false;
+                SqlCommand cmdMulta = new SqlCommand("SELECT COUNT(*) FROM Multas WHERE IdPrestamo = @id AND Pagado = 0", con);
+                cmdMulta.Parameters.AddWithValue("@id", IdFila);
+                int count = (int)cmdMulta.ExecuteScalar();
+                tieneMultaNoPagada = count > 0;
+
+                if (tieneMultaNoPagada)
+                {
+                    MessageBox.Show("Este libro no se puede devolver porque tiene una multa pendiente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    con.Close();
+                    return;
+                }
+
+                // ✅ Si no tiene multa, permitir devolución
+                cmd.CommandText = "UPDATE Prestamos SET DiaDevolucion = @fechaDevolucion WHERE NumeroControlE = @control AND IdPrestamo = @id";
+                cmd.Parameters.AddWithValue("@fechaDevolucion", dateTimePicker10.Value.Date);
+                cmd.Parameters.AddWithValue("@control", txtNumeroControl.Text);
+                cmd.Parameters.AddWithValue("@id", IdFila);
                 cmd.ExecuteNonQuery();
+
                 con.Close();
+
                 ActualizarCantidad(NombreLibroDevuelto);
-                MessageBox.Show("Regreso de libro exitoso", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Regreso de libro exitoso", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RegresarLibro_Load(this, null);
             }
-            else {
+            else
+            {
                 return;
             }
         }
 
+
         private void ActualizarCantidad(string NombreLibroDevuelto) {
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = 192.168.27.1,1433; database = Bblioteca; user id = sa; password = sa1@;";
+            con.ConnectionString = "data source=localhost; database=Bblioteca; user id=sa; password=sa1@;";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             con.Open();
